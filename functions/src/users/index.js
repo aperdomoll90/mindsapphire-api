@@ -1,19 +1,9 @@
-var admin = require('firebase-admin');
-var credentials = require('../../credentials.json');
+const admin = require('firebase-admin');
+const { connectToFB } = require('../firestore')
 
-let db;
-
-function connectToFB() {
-  if (!db) {
-    admin.initializeApp({
-      credential: admin.credential.cert(credentials),
-    });
-    db = admin.firestore();
-  }
-}
 
 exports.getAllUsers = (req, res) => {
-  connectToFB();
+  const db = connectToFB()
   db.collection('users')
     .get()
     .then(collection => {
@@ -30,7 +20,7 @@ exports.getAllUsers = (req, res) => {
 
 
 exports.getUserById = (req, res) => {
-  connectToFB();
+  const db = connectToFB()
   const {useId} = req.params
   db.collection('users').doc(useId).get()
   .then(doc => {
@@ -43,7 +33,7 @@ exports.getUserById = (req, res) => {
 
 
 exports.newUser = (req, res) => {
-  connectToFB();
+  const db = connectToFB()
   const newData = req.body;
   db.collection('users')
     .add(newData)
@@ -52,7 +42,7 @@ exports.newUser = (req, res) => {
 };
 
 exports.updateUser = (req, res) => {
-  connectToFB();
+  const db = connectToFB()
   const {userId} = req.params
   const newData = req.body
   db.collection('users').doc(userId).update(newData)
@@ -63,7 +53,7 @@ exports.updateUser = (req, res) => {
 
 
 exports.deleteUser = (req, res) => {
-  connectToFB();
+  const db = connectToFB()
   const { userId } = req.params
   db.collection('users').doc(userId).delete()
   .then(() => this.getAllUsers(req, res))
