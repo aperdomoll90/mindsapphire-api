@@ -21,7 +21,7 @@ exports.getAllUsers = (req, res) => {
 
 exports.getUserById = (req, res) => {
   const db = connectToFB()
-  const {useId} = req.params
+  const {userId} = req.params
   db.collection('users').doc(useId).get()
   .then(doc => {
         let user = doc.data()
