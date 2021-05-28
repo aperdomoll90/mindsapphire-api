@@ -12,8 +12,8 @@ app.get('/users', getAllUsers); //get all users
 app.patch('/users/:userId', updateUser) // update User by id
 app.delete('/users/:userId', deleteUser) // delete User by id
 
-app.get('/logs/:userId', getAllLogs); //get all logs by user
-app.post('/logs/:userId', newLog); //create New log
+// app.get('/logs/:userId', getAllLogs); //get all logs by user
+// app.post('/logs/:userId', newLog); //create New log
 
 
 
