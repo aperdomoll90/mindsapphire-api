@@ -13,8 +13,8 @@ app.patch('/users/:userId', updateUser) // update User by id
 app.delete('/users/:userId', deleteUser) // delete User by id
 
 app.post('/logs/:logId', newLog); //create New log
-// app.get('/logs/:logId', getLogObject); //get all logs objects
 app.patch('/logs/:logId', updateLog) // update User by id
+
 
 
 exports.app = functions.https.onRequest(app);
