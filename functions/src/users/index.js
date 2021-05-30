@@ -19,6 +19,7 @@ exports.getAllUsers = (req, res) => {
 };
 
 
+
 exports.getUserById = (req, res) => {
   const db = connectToFB()
   const {userId} = req.params
@@ -40,6 +41,16 @@ exports.newUser = (req, res) => {
     .then(() => this.getAllUsers(req, res))
     .catch((err) => res.send('Error creating new user', +err.message));
 };
+
+// exports.newUserById = (req, res) => {
+//   const db = connectToFB()
+//   const {userId} = req.params
+//   const newData = req.body;
+//   db.collection('users/{userId}')
+//     .add(newData)
+//     .then(() => this.getAllUsers(req, res))
+//     .catch((err) => res.send('Error creating new user', +err.message));
+// };
 
 exports.updateUser = (req, res) => {
   const db = connectToFB()
