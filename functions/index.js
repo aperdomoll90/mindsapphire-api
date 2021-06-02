@@ -8,9 +8,8 @@ app.use(cors())
 
 app.post('/users/:userId', newUser);//create New user
 app.get('/users/:userId', getUserById); //get user by ID
-app.get('/users', getAllUsers); //get all users
+
 app.patch('/users/:userId', updateUser) // update User by id
-app.delete('/users/:userId', deleteUser) // delete User by id
 
 app.post('/logs/:logId', newLog); //create New log
 app.patch('/logs/:logId', updateLog) // update User by id
